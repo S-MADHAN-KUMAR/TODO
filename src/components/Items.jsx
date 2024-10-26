@@ -2,10 +2,36 @@ import React, { useState } from 'react';
 import Card from './Card';
 
 const Items = ({ tasks, setTasks }) => {
-    const [editingTaskId, setEditingTaskId] = useState(null);
+    
+    const [editingTaskId, setEditingTaskId] = useState(null)
+
+
     const deleteTask = (taskId) => {
-        setTasks(tasks.filter(task => task.id !== taskId));
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                
+                setTasks(prevTasks => prevTasks.filter(task => task.id !== taskId));
+
+
+
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                });
+            }
+        });
     };
+
 
     const editTask = (taskId) => {
         setEditingTaskId(taskId);
