@@ -45,7 +45,7 @@ const Items = ({ tasks, setTasks }) => {
     };
 
     return (
-        <div className='mt-2 py-3 md:py-12 flex flex-wrap gap-6 md:gap-10 justify-center bg-slate-800 rounded-lg'>
+        <div className='mt-2 py-3 md:py-12 flex flex-wrap-reverse gap-6 md:gap-10 justify-center bg-slate-800 rounded-lg'>
             {tasks.length > 0 ? ( 
                 tasks.map((task) => (
                     <Card 
